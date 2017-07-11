@@ -1,0 +1,20 @@
+{
+  "collectCoverageFrom": ["src/scripts/**/*.{js,jsx,ts,tsx}"],
+  "coverageDirectory": "build/test/coverage",
+  "coverageReporters": ["cobertura", "html", "text-summary"],
+  "coverageThreshold": {
+    "global": {
+      "branches": 16.27,
+      "functions": 23.84,
+      "lines": 32.67,
+      "statements": 29.44
+    }
+  },
+  "moduleFileExtensions": ["js", "jsx", "json", "ts", "tsx"],
+  "setupFiles": ["<rootDir>/__tests__/polyfill.ts"],
+  "testPathIgnorePatterns": ["/build/", "/node_modules/"],
+  "testRegex": "/__tests__/.*\\.test\\.(ts|tsx|js)$",
+  "transform": {
+    ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+  }
+}

@@ -8,20 +8,17 @@
     "url": "https://github.com/kdama/nyanpass.git"
   },
   "scripts": {
-    "start": "npm-run-all -l clean -p serve watch:*",
+    "start": "npm-run-all -l clean -p serve watch",
     "test": "run-s test:clean test:single",
-    "build": "run-p -l build:*",
+    "build": "webpack",
     "clean": "del-cli ./build",
     "lint": "run-p lint:*",
-    "fix": "run-s fix:*",
+    "fix": "prettier -l --print-width 80 --trailing-comma all --write \"*.{ts,tsx}\" \"src/**/*.{ts,tsx}\" \"__tests__/**/*.{ts,tsx}\"",
     "serve": "webpack-dev-server --inline --port 8000",
     "sloc": "sloc ./src",
-    "build:scripts": "webpack",
-    "watch:scripts": "run-s test:clean test:run",
-    "fix:scripts": "prettier -l --print-width 80 --trailing-comma all --write \"*.{ts,tsx}\" \"src/**/*.{ts,tsx}\" \"__tests__/**/*.{ts,tsx}\"",
-    "lint:scripts": "run-p lint:scripts:*",
-    "lint:scripts:prettier": "prettier -l --print-width 80 --trailing-comma all \"*.{ts,tsx}\" \"src/**/*.{ts,tsx}\" \"__tests__/**/*.{ts,tsx}\"",
-    "lint:scripts:tslint": "tslint \"./**/*.ts?(x)\" -e \"./node_modules/**\" -t stylish",
+    "watch": "run-s test:clean test:run",
+    "lint:prettier": "prettier -l --print-width 80 --trailing-comma all \"*.{ts,tsx}\" \"src/**/*.{ts,tsx}\" \"__tests__/**/*.{ts,tsx}\"",
+    "lint:tslint": "tslint \"./**/*.ts?(x)\" -e \"./node_modules/**\" -t stylish",
     "test:clean": "del-cli ./build/test",
     "test:run": "jest -c ./jest.config.json --watch",
     "test:single": "jest -c ./jest.config.json --coverage"
@@ -75,6 +72,5 @@
   },
   "engines": {
     "node": ">=6"
-  },
-  "private": true
+  }
 }

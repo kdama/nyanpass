@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react"
+  ],
+  "lintOptions": {
+    "typeCheck": true
+  },
+  "rules": {
+    "arrow-parens": [
+      true,
+      "ban-single-arg-parens"
+    ],
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
+    "jsx-wrap-multiline": false,
+    "max-line-length": [
+      false
+    ],
+    "object-literal-key-quotes": [
+      true,
+      "as-needed"
+    ],
+    "quotemark": [
+      true,
+      "double",
+      "avoid-escape",
+      "jsx-double"
+    ],
+    "semicolon": [
+      false
+    ]
+  }
+}

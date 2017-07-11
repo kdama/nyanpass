@@ -1,0 +1,6 @@
+{
+  "prettier.printWidth": 80,
+  "prettier.singleQuote": false,
+  "prettier.trailingComma": "all",
+  "prettier.typescriptEnable": ["typescript", "typescriptreact"]
+}

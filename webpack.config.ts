@@ -64,7 +64,7 @@ const config: webpack.Configuration = {
   output: {
     filename: "[name].js",
     path: path.join(__dirname, "./build/dist/"),
-    publicPath: "/",
+    publicPath: "",
   },
   plugins: DEBUG
     ? [

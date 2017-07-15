@@ -1,19 +1,12 @@
 {
-  "collectCoverageFrom": ["src/scripts/**/*.{js,jsx,ts,tsx}"],
+  "collectCoverageFrom": ["src/scripts/**/*.{ts,tsx}"],
   "coverageDirectory": "build/test/coverage",
   "coverageReporters": ["cobertura", "html", "text-summary"],
-  "coverageThreshold": {
-    "global": {
-      "branches": 16.27,
-      "functions": 23.84,
-      "lines": 32.67,
-      "statements": 29.44
-    }
-  },
-  "moduleFileExtensions": ["js", "jsx", "json", "ts", "tsx"],
+  "mapCoverage": true,
+  "moduleFileExtensions": ["ts", "tsx", "js"],
   "setupFiles": ["<rootDir>/__tests__/polyfill.ts"],
   "testPathIgnorePatterns": ["/build/", "/node_modules/"],
-  "testRegex": "/__tests__/.*\\.test\\.(ts|tsx|js)$",
+  "testRegex": "/__tests__/.*\\.test\\.(ts|tsx)$",
   "transform": {
     ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   }

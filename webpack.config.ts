@@ -8,7 +8,7 @@ const DEBUG = process.env.NODE_ENV !== "production";
 const VERBOSE = process.argv.includes("--verbose");
 
 const entry = {
-  main: ["babel-polyfill", "whatwg-fetch", "./src/index.tsx"],
+  main: ["babel-polyfill", "whatwg-fetch", "./src/scripts/index.tsx"],
 };
 
 const config: webpack.Configuration = {

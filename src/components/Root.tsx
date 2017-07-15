@@ -17,6 +17,5 @@ function generate() {
   return generateString({
     includes: [Presets.LowerAlphabets, Presets.Numbers, Presets.UpperAlphabets],
     maxLength: 32,
-    minLength: 32,
   });
 }

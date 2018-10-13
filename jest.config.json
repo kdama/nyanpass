@@ -2,12 +2,11 @@
   "collectCoverageFrom": ["src/scripts/**/*.{ts,tsx}"],
   "coverageDirectory": "build/test/coverage",
   "coverageReporters": ["cobertura", "html", "text-summary"],
-  "mapCoverage": true,
   "moduleFileExtensions": ["ts", "tsx", "js"],
   "setupFiles": ["<rootDir>/__tests__/polyfill.ts"],
   "testPathIgnorePatterns": ["/build/", "/node_modules/"],
   "testRegex": "/__tests__/.*\\.test\\.(ts|tsx)$",
   "transform": {
-    ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    ".(ts|tsx)": "ts-jest"
   }
 }

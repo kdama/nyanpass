@@ -2,9 +2,7 @@ import * as HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import * as webpack from "webpack";
 
-const ES5to3OutputPlugin = require("es5to3-webpack-plugin"); // tslint:disable-line:no-require-imports no-var-requires
-
-const DEBUG = process.env.NODE_ENV !== "production";
+const PRODUCTION = process.env.NODE_ENV !== "production";
 const VERBOSE = process.argv.includes("--verbose");
 
 const entry = {
@@ -12,7 +10,7 @@ const entry = {
 };
 
 const config: webpack.Configuration = {
-  cache: DEBUG,
+  cache: PRODUCTION,
   devServer: {
     compress: true,
     contentBase: path.join(__dirname, "./build/dist"),
@@ -43,20 +41,15 @@ const config: webpack.Configuration = {
       poll: 1000,
     },
   },
-  devtool: DEBUG ? "inline-source-map" : false,
+  devtool: PRODUCTION ? "inline-source-map" : false,
   entry,
+  mode: "development",
   module: {
     exprContextCritical: false,
     rules: [
       {
         include: [path.resolve(__dirname, "./src")],
-        loader: "awesome-typescript-loader",
-        test: /\.tsx?$/,
-      },
-      {
-        enforce: "pre",
-        include: [path.resolve(__dirname, "./src")],
-        loader: "tslint-loader",
+        loader: "ts-loader",
         test: /\.tsx?$/,
       },
     ],
@@ -66,13 +59,13 @@ const config: webpack.Configuration = {
     path: path.join(__dirname, "./build/dist/"),
     publicPath: "",
   },
-  plugins: DEBUG
+  plugins: PRODUCTION
     ? [
         new HtmlWebpackPlugin({
           title: "nyanpass",
         }),
         new webpack.LoaderOptionsPlugin({
-          debug: DEBUG,
+          debug: PRODUCTION,
         }),
       ]
     : [
@@ -81,15 +74,8 @@ const config: webpack.Configuration = {
         }),
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
-        new ES5to3OutputPlugin(),
       ],
   resolve: {
-    alias: DEBUG
-      ? {}
-      : {
-          react: "preact-compat",
-          "react-dom": "preact-compat",
-        },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   stats: {
@@ -99,7 +85,7 @@ const config: webpack.Configuration = {
     chunkModules: VERBOSE,
     chunkOrigins: VERBOSE,
     chunks: VERBOSE,
-    colors: DEBUG,
+    colors: PRODUCTION,
     errorDetails: VERBOSE,
     hash: true,
     modules: VERBOSE,

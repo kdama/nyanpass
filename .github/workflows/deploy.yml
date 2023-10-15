@@ -1,0 +1,30 @@
+name: deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 18
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
+      - name: install
+        run: |
+          yarn install
+      - name: build
+        run: |
+          yarn build
+        env:
+          GITHUB_PAGES: true
+      - name: export
+        run: |
+          yarn export
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
